@@ -24,7 +24,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/XiaoMi/soar/common"
+	"github.com/zeusYi/soar/common"
 
 	"github.com/kr/pretty"
 )
