@@ -21,9 +21,9 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/zeusYi/soar/common"
+	"github.com/go-ragnaros/soar/common"
 
-	"github.com/zeusYi/soar/env"
+	"github.com/go-ragnaros/soar/env"
 	"github.com/kr/pretty"
 	"vitess.io/vitess/go/vt/sqlparser"
 )
@@ -849,7 +849,7 @@ func TestRuleUpdateSetAnd(t *testing.T) {
 		},
 		{
 			"update tbl set col = 1 ,cl = 2 where col=3;",
-			// https://github.com/zeusYi/soar/issues/226
+			// https://github.com/go-ragnaros/soar/issues/226
 			"update table1 set a = ( select a from table2 where b=1 and c=2), b=1, c=2 where d=2",
 		},
 	}
@@ -1009,7 +1009,7 @@ func TestRuleMultiCompare(t *testing.T) {
 		},
 		{
 			"SELECT * FROM tbl WHERE col = 'abc'",
-			// https://github.com/zeusYi/soar/issues/169
+			// https://github.com/go-ragnaros/soar/issues/169
 			"SELECT * FROM tbl WHERE col = 'abc' and c = 1",
 			"update tb set c = 1 where a = 2 and b = 3",
 			"delete from tb where a = 2 and b = 3",

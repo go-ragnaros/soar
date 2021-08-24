@@ -19,7 +19,7 @@ package advisor
 import (
 	"testing"
 
-	"github.com/zeusYi/soar/common"
+	"github.com/go-ragnaros/soar/common"
 )
 
 func TestDigestExplainText(t *testing.T) {

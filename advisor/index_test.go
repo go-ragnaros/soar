@@ -25,9 +25,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/zeusYi/soar/common"
-	"github.com/zeusYi/soar/database"
-	"github.com/zeusYi/soar/env"
+	"github.com/go-ragnaros/soar/common"
+	"github.com/go-ragnaros/soar/database"
+	"github.com/go-ragnaros/soar/env"
 
 	"github.com/kr/pretty"
 	"vitess.io/vitess/go/vt/sqlparser"
@@ -93,7 +93,7 @@ func TestRuleImplicitConversion(t *testing.T) {
 			"SELECT * FROM t4 WHERE col = '1'",
 		},
 		{
-			// https://github.com/zeusYi/soar/issues/151
+			// https://github.com/go-ragnaros/soar/issues/151
 			"SELECT * FROM t4 WHERE col = 1",
 			"SELECT * FROM sakila.film WHERE rental_rate > 1",
 		},

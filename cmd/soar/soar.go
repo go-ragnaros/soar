@@ -22,11 +22,11 @@ import (
 	"os"
 	"strings"
 
-	"github.com/zeusYi/soar/advisor"
-	"github.com/zeusYi/soar/ast"
-	"github.com/zeusYi/soar/common"
-	"github.com/zeusYi/soar/database"
-	"github.com/zeusYi/soar/env"
+	"github.com/go-ragnaros/soar/advisor"
+	"github.com/go-ragnaros/soar/ast"
+	"github.com/go-ragnaros/soar/common"
+	"github.com/go-ragnaros/soar/database"
+	"github.com/go-ragnaros/soar/env"
 
 	"github.com/go-sql-driver/mysql"
 	"github.com/kr/pretty"

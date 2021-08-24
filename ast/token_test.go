@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/zeusYi/soar/common"
+	"github.com/go-ragnaros/soar/common"
 
 	"github.com/kr/pretty"
 )
@@ -134,13 +134,13 @@ func TestSplitStatement(t *testing.T) {
 		;*/
 		from test;hello`), // 6
 		[]byte(`select * from test`), // 7
-		// https://github.com/zeusYi/soar/issues/66
+		// https://github.com/go-ragnaros/soar/issues/66
 		[]byte(`/*comment*/`),  // 8
 		[]byte(`/*comment*/;`), // 9
 		[]byte(`--`),           // 10
 		[]byte(`-- comment`),   // 11
 		[]byte(`# comment`),    // 12
-		// https://github.com/zeusYi/soar/issues/116
+		// https://github.com/go-ragnaros/soar/issues/116
 		[]byte(`select
 *
 -- comment
@@ -163,16 +163,16 @@ where col = 1`), // 16
 -- comment
 tb;
 select col from tb where col = 1;`), // 17
-		// https://github.com/zeusYi/soar/issues/120
+		// https://github.com/go-ragnaros/soar/issues/120
 		[]byte(`
 -- comment
 select col from tb;
 select col from tb;
 `), // 18
-		[]byte(`INSERT /*+ SET_VAR(foreign_key_checks=OFF) */ INTO t2 VALUES(2);`), // 19
-		[]byte(`select /*!50000 1,*/ 1;`),                                          // 20
-		[]byte(`UPDATE xxx SET c1=' LOGGER.error(""); }' WHERE id = 2 ;`),          // 21
-		[]byte("UPDATE `xxx` SET aaa='a;' WHERE `id` = 15;"),                       // 22
+		[]byte(`INSERT /*+ SET_VAR(foreign_key_checks=OFF) */ INTO t2 VALUES(2);`),                              // 19
+		[]byte(`select /*!50000 1,*/ 1;`),                                                                       // 20
+		[]byte(`UPDATE xxx SET c1=' LOGGER.error(""); }' WHERE id = 2 ;`),                                       // 21
+		[]byte("UPDATE `xxx` SET aaa='a;' WHERE `id` = 15;"),                                                    // 22
 		[]byte("UPDATE `xxx` SET aaa='a -- b' WHERE `id` = 15; UPDATE `xxx` SET aaa='c -- d' WHERE `id` = 16;"), // 23
 		// []byte(`/* comment here */ SET MAX_JOIN_SIZE=#`),                        // 24
 	}

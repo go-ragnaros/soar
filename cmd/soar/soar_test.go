@@ -24,7 +24,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/zeusYi/soar/common"
+	"github.com/go-ragnaros/soar/common"
 )
 
 var update = flag.Bool("update", false, "update .golden files")

@@ -22,7 +22,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/zeusYi/soar/common"
+	"github.com/go-ragnaros/soar/common"
 
 	"vitess.io/vitess/go/vt/sqlparser"
 )

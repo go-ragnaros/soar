@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/zeusYi/soar/common"
+	"github.com/go-ragnaros/soar/common"
 )
 
 // CurrentUser get current user with current_user() function
