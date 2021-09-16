@@ -518,7 +518,7 @@ func (db *Connector) explainAbleSQL(sql string) (string, error) {
 		var isSelect bool
 		for _, st := range tiStmt {
 			switch st.(type) {
-			case *tidb.SelectStmt, *tidb.UnionStmt:
+			case *tidb.SelectStmt:
 				isSelect = true
 			default:
 				isSelect = false
