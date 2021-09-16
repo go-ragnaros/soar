@@ -1776,7 +1776,7 @@ func (q *Query4Audit) RuleImpreciseDataType() Rule {
 						continue
 					}
 					switch col.Tp.Tp {
-					case mysql.TypeFloat, mysql.TypeDouble, mysql.TypeDecimal, mysql.TypeNewDecimal:
+					case mysql.TypeFloat, mysql.TypeDouble, mysql.TypeNewDecimal:
 						rule = HeuristicRules["COL.009"]
 					}
 				}
@@ -1791,8 +1791,7 @@ func (q *Query4Audit) RuleImpreciseDataType() Rule {
 								continue
 							}
 							switch col.Tp.Tp {
-							case mysql.TypeFloat, mysql.TypeDouble,
-								mysql.TypeDecimal, mysql.TypeNewDecimal:
+							case mysql.TypeFloat, mysql.TypeDouble, mysql.TypeNewDecimal:
 								rule = HeuristicRules["COL.009"]
 							}
 						}
