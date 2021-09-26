@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"regexp"
 	"strings"
+	"sync"
 	"unicode"
 
 	"vitess.io/vitess/go/vt/sqlparser"
@@ -45,7 +46,7 @@ const (
 var maxCachekeySize = 15
 var cacheHits int
 var cacheMisses int
-var tokenCache map[string]Token
+var tokenCache sync.Map
 
 var tokenBoundaries = []string{
 	// multi character
@@ -790,7 +791,6 @@ func Tokenize(sql string) []Token {
 	var token Token
 	var tokenLength int
 	var tokens []Token
-	tokenCache = make(map[string]Token)
 
 	// Used to make sure the string keeps shrinking on each iteration
 	oldStringLen := len(sql) + 1
@@ -816,9 +816,9 @@ func Tokenize(sql string) []Token {
 		}
 
 		// See if the token is already cached
-		if _, ok := tokenCache[cacheKey]; ok {
+		if tokenI, ok := tokenCache.Load(cacheKey); ok {
 			// Retrieve from cache
-			token = tokenCache[cacheKey]
+			token := tokenI.(Token)
 			tokenLength = len(token.Val)
 			cacheHits = cacheHits + 1
 		} else {
@@ -828,7 +828,7 @@ func Tokenize(sql string) []Token {
 			cacheMisses = cacheMisses + 1
 			// If the token is shorter than the max length, store it in cache
 			if cacheKey != "" && tokenLength < maxCachekeySize {
-				tokenCache[cacheKey] = token
+				tokenCache.Store(cacheKey, token)
 			}
 		}
 
