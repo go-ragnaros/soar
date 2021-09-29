@@ -645,7 +645,7 @@ func getNextToken(buf string, previous Token) Token {
 			last = strings.Index(buf[2:], "*/") + 2
 			typ = TokenTypeBlockComment
 		}
-		if last == -1 {
+		if last == 0 {
 			last = len(buf)
 		}
 		return Token{
