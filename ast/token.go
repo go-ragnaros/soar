@@ -45,7 +45,6 @@ const (
 var maxCachekeySize = 15
 var cacheHits int
 var cacheMisses int
-var tokenCache map[string]Token
 
 var tokenBoundaries = []string{
 	// multi character
@@ -644,7 +643,7 @@ func getNextToken(buf string, previous Token) Token {
 			last = strings.Index(buf[2:], "*/") + 2
 			typ = TokenTypeBlockComment
 		}
-		if last == -1 {
+		if last <= 0 {
 			last = len(buf)
 		}
 		return Token{
@@ -790,7 +789,7 @@ func Tokenize(sql string) []Token {
 	var token Token
 	var tokenLength int
 	var tokens []Token
-	tokenCache = make(map[string]Token)
+	tokenCache := make(map[string]Token)
 
 	// Used to make sure the string keeps shrinking on each iteration
 	oldStringLen := len(sql) + 1
